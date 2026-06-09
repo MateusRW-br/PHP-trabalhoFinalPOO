@@ -12,4 +12,19 @@ class Usuario{
         $this->tarefas = [];
     }
 
+    /**
+     * @param string $nome
+     */
+    public function setNome(string $nome): void
+    {
+        $this->nome = $nome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNome(): string
+    {
+        return $this->nome;
+    }
 }

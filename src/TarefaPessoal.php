@@ -17,4 +17,12 @@ class TarefaPessoal extends Tarefa{
     {
         $this->prioridade = $prioridade;
     }
+
+    /**
+     * @return string
+     */
+    public function getPrioridade(): string
+    {
+        return $this->prioridade;
+    }
 }
