@@ -1,35 +1,58 @@
 <?php
-namespace mateus\php;
-class repos
+
+namespace Mateus\Php;
+
+use Mateus\Php\Tarefa;
+use Mateus\Php\Usuario;
+
+class gerenciaTarefas
 {
-    public array $repositories = [];
-
-    public function addRepository(Tarefa $tarefa){
-        $this->repositories[] = $tarefa;
+    public function criarTarefa(Tarefa $tarefa, Usuario $usuario): void
+    {
+        $usuario->adicionarTarefa($tarefa);
+        echo "Tarefa adicionada com sucesso!\n";
     }
 
-    public function removeRepository($id){
-
-        for($i = 0; $i < count($this->repositories); $i++){
-            if($this->repositories[$i]->getId() == $id){
-                unset($this->repositories[$i]);
+    public function alterarTarefa(int $id, string $novaDescricao, Usuario $usuario): void
+    {
+        foreach ($usuario->getTarefas() as $tarefa) {
+            if ($tarefa->getId() === $id) {
+                $tarefa->setDescricao($novaDescricao);
+                echo "Tarefa alterada com sucesso!\n";
+                return;
             }
         }
+        echo "Tarefa não encontrada para alteração.\n";
     }
 
-    public function getRepository(){
-        return $this->repositories;
-    }
+    public function excluirTarefa(int $id, Usuario $usuario): void
+    {
+        $tarefasAtuais = $usuario->getTarefas();
 
-    public function find($id){
-        foreach ($this->repositories as $tarefa) {
-            if ($tarefa->getId() == $id) {
-                return $tarefa;
+        foreach ($tarefasAtuais as $index => $tarefa) {
+            if ($tarefa->getId() === $id) {
+                unset($tarefasAtuais[$index]); 
+
+                $usuario->setTarefas(array_values($tarefasAtuais));
+                echo "Tarefa excluída com sucesso!\n";
+                return;
             }
         }
+        echo "Tarefa não encontrada para exclusão.\n";
     }
 
-    public function update(Tarefa $tarefa, $data){
-        $this->repositories[$tarefa] = $data;
+    public function listarTarefas(Usuario $usuario): void
+    {
+        $tarefas = $usuario->getTarefas();
+
+        if (empty($tarefas)) {
+            echo "Nenhuma tarefa a fazer.\n";
+            return;
+        }
+
+        echo "Lista de Tarefas de " . $usuario->getNome() . "\n";
+        foreach ($tarefas as $tarefa) {
+            echo $tarefa->exibirDetalhes() . "\n";
+        }
     }
 }

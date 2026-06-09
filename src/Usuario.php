@@ -1,30 +1,52 @@
 <?php
 
-namespace mateus\php;
+namespace Mateus\Php;
 
-class Usuario{
+use Mateus\Php\Tarefa;
+
+class Usuario 
+{
     private string $nome;
-    /*@var Tarefa[]*/
+    
+    /**
+     * @var Tarefa[]
+     */
     private array $tarefas;
 
-    public function construtor(string $nome){
-        $this->nome = $nome;
-        $this->tarefas = [];
-    }
-
-    /**
-     * @param string $nome
-     */
-    public function setNome(string $nome): void
+    public function __construct(string $nome) 
     {
         $this->nome = $nome;
+        $this->tarefas = []; 
+    }
+
+    public function adicionarTarefa(Tarefa $tarefa): void 
+    {
+        $this->tarefas[] = $tarefa;
     }
 
     /**
-     * @return string
+     * @param Tarefa[] $tarefas
      */
-    public function getNome(): string
+    public function setTarefas(array $tarefas): void 
+    {
+        $this->tarefas = $tarefas;
+    }
+
+    /**
+     * @return Tarefa[]
+     */
+    public function getTarefas(): array 
+    {
+        return $this->tarefas;
+    }
+
+    public function getNome(): string 
     {
         return $this->nome;
+    }
+
+    public function setNome(string $nome): void 
+    {
+        $this->nome = $nome;
     }
 }

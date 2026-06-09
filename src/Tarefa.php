@@ -1,27 +1,37 @@
 <?php
 
-namespace mateus\php;
-abstract class Tarefa{
-    public $descricao;
-    public $id;
+namespace Mateus\Php;
 
-    public function construtor($descricao, $id){
+abstract class Tarefa 
+{
+    protected int $id;
+    protected string $descricao;
+
+    public function __construct(int $id, string $descricao) 
+    {
+        $this->id = $id;
         $this->descricao = $descricao;
+    }
+
+    public function getId(): int 
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void 
+    {
         $this->id = $id;
     }
-    public function getDescricao()
+
+    public function getDescricao(): string 
     {
         return $this->descricao;
     }
-    public function getId(){
-        return $this->id;
-    }
-    public function setDescricao($descricao): void
+
+    public function setDescricao(string $descricao): void 
     {
         $this->descricao = $descricao;
     }
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
+
+    abstract public function exibirDetalhes(): string;
 }

@@ -3,7 +3,7 @@
         'name' => 'mateus/php',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '042eab49760b6dab195e4bf4f3a611ac255311ee',
+        'reference' => '78e8d142215633c543ae58ce20c00d3f0324542f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'mateus/php' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '042eab49760b6dab195e4bf4f3a611ac255311ee',
+            'reference' => '78e8d142215633c543ae58ce20c00d3f0324542f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -1,28 +1,29 @@
 <?php
 
-namespace mateus\php;
+namespace Mateus\Php;
 
-class TarefaProfissional extends Tarefa{
+class TarefaProfissional extends Tarefa 
+{
     private string $dataPrazo;
-    public function construtor($descricao, $id, $dataPrazo)
+
+    public function __construct(int $id, string $descricao, string $dataPrazo) 
     {
-        parent::construtor($descricao, $id);
+        parent::__construct($id, $descricao); 
         $this->dataPrazo = $dataPrazo;
     }
 
-    /**
-     * @param string $dataPrazo
-     */
-    public function setDataPrazo(string $dataPrazo): void
-    {
-        $this->dataPrazo = $dataPrazo;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDataPrazo(): string
+    public function getDataPrazo(): string 
     {
         return $this->dataPrazo;
+    }
+
+    public function setDataPrazo(string $dataPrazo): void 
+    {
+        $this->dataPrazo = $dataPrazo;
+    }
+
+    public function exibirDetalhes(): string 
+    {
+        return "[Profissional] ID: {$this->id} | Descrição: {$this->descricao} (Prazo: {$this->dataPrazo})";
     }
 }
