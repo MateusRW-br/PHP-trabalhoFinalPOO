@@ -2,7 +2,7 @@
     "name": "mateus/php",
     "autoload": {
         "psr-4": {
-            "Mateus\\Php\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
