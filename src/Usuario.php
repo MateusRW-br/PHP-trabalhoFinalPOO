@@ -11,7 +11,7 @@ class Usuario
     /**
      * @var Tarefa[]
      */
-    private array $tarefas;
+    private array $tarefas;  //Agregacao
 
     public function __construct(string $nome) 
     {
@@ -33,7 +33,7 @@ class Usuario
     }
 
     /**
-     * @return Tarefa[]
+     * @return Tarefa[] // Nao necessario
      */
     public function getTarefas(): array 
     {
