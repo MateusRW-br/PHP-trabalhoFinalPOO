@@ -13,16 +13,31 @@ class gerenciaTarefas
         echo "Tarefa adicionada com sucesso!\n";
     }
 
-    public function alterarTarefa(int $id, string $novaDescricao, Usuario $usuario): void
+    public function alterarTarefa(int $id, ?string $novaDescricao = null, ?string $novaPrioridade = null, ?string $novaDataPrazo = null, Usuario $usuario): void 
     {
         foreach ($usuario->getTarefas() as $tarefa) {
             if ($tarefa->getId() === $id) {
-                $tarefa->setDescricao($novaDescricao);
-                echo "Tarefa alterada com sucesso!\n";
+                
+                if ($novaDescricao !== null) {
+                    $tarefa->setDescricao($novaDescricao);
+                }
+
+                if ($tarefa instanceof TarefaPessoal) {
+                    if ($novaPrioridade !== null) {
+                        $tarefa->setPrioridade($novaPrioridade);
+                    }
+                } 
+                if ($tarefa instanceof TarefaProfissional) {
+                    if ($novaDataPrazo !== null) {
+                        $tarefa->setDataPrazo($novaDataPrazo);
+                    }
+                }
+
+                echo "Tarefa ID {$id} atualizada com sucesso!\n";
                 return;
             }
         }
-        echo "Tarefa não encontrada para alteração.\n";
+        echo "Tarefa ID {$id} não encontrada para alteração.\n";
     }
 
     public function excluirTarefa(int $id, Usuario $usuario): void
